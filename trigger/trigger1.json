@@ -10,7 +10,7 @@
 					"type": "PipelineReference"
 				},
 				"parameters": {
-					"param": "bb"
+					"param": "cc"
 				}
 			}
 		],

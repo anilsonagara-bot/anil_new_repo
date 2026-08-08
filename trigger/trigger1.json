@@ -1,0 +1,35 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "insertintotable",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"param": "aa"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 15,
+				"startTime": "2026-08-08T19:34:00",
+				"timeZone": "India Standard Time",
+				"schedule": {
+					"minutes": [
+						5
+					],
+					"hours": [
+						5
+					]
+				}
+			}
+		}
+	}
+}

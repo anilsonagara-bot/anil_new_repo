@@ -9,7 +9,7 @@
 		},
 		"trigger1_properties_insertintotable_parameters_param": {
 			"type": "string",
-			"defaultValue": "aa"
+			"defaultValue": "cc"
 		},
 		"containerUri": {
 			"type": "string",

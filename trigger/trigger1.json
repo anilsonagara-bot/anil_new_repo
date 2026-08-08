@@ -12,15 +12,6 @@
 				"parameters": {
 					"param": "cc"
 				}
-			},
-			{
-				"pipelineReference": {
-					"referenceName": "pipeline1",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"pip2": "ff"
-				}
 			}
 		],
 		"type": "ScheduleTrigger",

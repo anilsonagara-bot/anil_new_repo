@@ -31,6 +31,16 @@
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
+				"parameters": {
+					"param": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"var": {
+						"type": "String"
+					}
+				},
 				"annotations": []
 			},
 			"dependsOn": []

@@ -12,6 +12,16 @@
 				}
 			}
 		],
+		"parameters": {
+			"pip2": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"val2": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }

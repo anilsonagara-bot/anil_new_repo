@@ -6,6 +6,10 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "DevelopmetADF"
+		},
+		"trigger1_properties_insertintotable_parameters_param": {
+			"type": "string",
+			"defaultValue": "aa"
 		}
 	},
 	"variables": {
@@ -67,6 +71,46 @@
 				"annotations": []
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "insertintotable",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"param": "[parameters('trigger1_properties_insertintotable_parameters_param')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 15,
+						"startTime": "2026-08-08T19:34:00",
+						"timeZone": "India Standard Time",
+						"schedule": {
+							"minutes": [
+								5
+							],
+							"hours": [
+								5
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/insertintotable')]"
+			]
 		}
 	]
 }

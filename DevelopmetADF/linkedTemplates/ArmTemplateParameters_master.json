@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "DevelopmetADF"
 		},
+		"trigger1_properties_insertintotable_parameters_param": {
+			"value": "aa"
+		},
 		"containerUri": {
 			"value": ""
 		},

@@ -3,7 +3,8 @@
 	"properties": {
 		"parameters": {
 			"servername": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "@pipeline().globalParameters.GlobalServerName"
 			},
 			"DBname": {
 				"type": "string"

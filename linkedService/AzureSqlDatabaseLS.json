@@ -7,7 +7,8 @@
 				"defaultValue": "@pipeline().globalParameters.GlobalServerName"
 			},
 			"DBname": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "GlobalDatabaseName"
 			},
 			"username": {
 				"type": "string"

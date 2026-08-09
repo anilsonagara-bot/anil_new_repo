@@ -12,7 +12,7 @@
 			},
 			"GlobalSqlUsername": {
 				"type": "string",
-				"value": "adf-anil"
+				"value": "anil-adf"
 			},
 			"StorageAccount": {
 				"type": "string",

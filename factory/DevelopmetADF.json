@@ -13,6 +13,10 @@
 			"GlobalSqlUsername": {
 				"type": "string",
 				"value": "adf-anil"
+			},
+			"StorageAccount": {
+				"type": "string",
+				"value": "adlsfordevelopment"
 			}
 		}
 	},

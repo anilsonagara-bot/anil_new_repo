@@ -5,6 +5,10 @@
 			"GlobalServerName": {
 				"type": "string",
 				"value": "developmentserverazure.database.windows.net"
+			},
+			"GlobalDatabaseName": {
+				"type": "string",
+				"value": "azureoltpdb"
 			}
 		}
 	},

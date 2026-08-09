@@ -9,6 +9,10 @@
 			"GlobalDatabaseName": {
 				"type": "string",
 				"value": "azureoltpdb"
+			},
+			"GlobalSqlUsername": {
+				"type": "string",
+				"value": "adf-anil"
 			}
 		}
 	},

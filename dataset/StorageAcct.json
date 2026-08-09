@@ -21,7 +21,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "testglobal.csv"
+				"fileName": "testglobal.csv",
+				"folderPath": "inputfiles"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

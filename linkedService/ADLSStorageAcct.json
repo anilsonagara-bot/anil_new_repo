@@ -1,0 +1,24 @@
+{
+	"name": "ADLSStorageAcct",
+	"properties": {
+		"parameters": {
+			"storageacct": {
+				"type": "string",
+				"defaultValue": "@pipeline().globalParameters. StorageAccount"
+			}
+		},
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "@{linkedService().storageacct}",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "KeyVaultLinkService",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "storageacctpassword"
+			}
+		}
+	}
+}

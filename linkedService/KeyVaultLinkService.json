@@ -1,0 +1,10 @@
+{
+	"name": "KeyVaultLinkService",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://KeyVaultDev123.vault.azure.net/"
+		}
+	}
+}

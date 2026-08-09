@@ -10,12 +10,19 @@
 						"type": "DatasetReference"
 					},
 					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "Parquet1",
+						"type": "DatasetReference"
+					},
+					"name": "source3"
 				}
 			],
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "AzureSqlTable2",
+						"referenceName": "Parquet2",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -35,16 +42,51 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
 				"     documentForm: 'arrayOfDocuments') ~> source1",
+				"source(output(",
+				"          orderId as string,",
+				"          orderDate as timestamp,",
+				"          customerId as string,",
+				"          customerName as string,",
+				"          email as string,",
+				"          city as string,",
+				"          state as string,",
+				"          country as string,",
+				"          pincode as string,",
+				"          sku as string,",
+				"          productName as string,",
+				"          quantity as integer,",
+				"          unitPrice as double,",
+				"          status as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> source3",
 				"source1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
+				"     input(",
+				"          orderId as string,",
+				"          orderDate as timestamp,",
+				"          customerId as string,",
+				"          customerName as string,",
+				"          email as string,",
+				"          city as string,",
+				"          state as string,",
+				"          country as string,",
+				"          pincode as string,",
+				"          sku as string,",
+				"          productName as string,",
+				"          quantity as integer,",
+				"          unitPrice as double,",
+				"          status as string",
+				"     ),",
+				"     format: 'parquet',",
+				"     rowUrlColumn:'',",
+				"     umask: 0777,",
+				"     preCommands: [],",
+				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}

@@ -1,0 +1,77 @@
+{
+	"name": "Parquet1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "sample_orders.parquet",
+				"fileSystem": "inputfiles"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "orderId",
+				"type": "UTF8"
+			},
+			{
+				"name": "orderDate",
+				"type": "TIMESTAMP_MICROS"
+			},
+			{
+				"name": "customerId",
+				"type": "UTF8"
+			},
+			{
+				"name": "customerName",
+				"type": "UTF8"
+			},
+			{
+				"name": "email",
+				"type": "UTF8"
+			},
+			{
+				"name": "city",
+				"type": "UTF8"
+			},
+			{
+				"name": "state",
+				"type": "UTF8"
+			},
+			{
+				"name": "country",
+				"type": "UTF8"
+			},
+			{
+				"name": "pincode",
+				"type": "UTF8"
+			},
+			{
+				"name": "sku",
+				"type": "UTF8"
+			},
+			{
+				"name": "productName",
+				"type": "UTF8"
+			},
+			{
+				"name": "quantity",
+				"type": "INT32"
+			},
+			{
+				"name": "unitPrice",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "status",
+				"type": "UTF8"
+			}
+		]
+	}
+}

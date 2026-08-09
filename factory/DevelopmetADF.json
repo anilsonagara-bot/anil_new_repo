@@ -13,10 +13,6 @@
 			"GlobalSqlUsername": {
 				"type": "string",
 				"value": "adf-anil"
-			},
-			"GlobalContainerName": {
-				"type": "string",
-				"value": "adlsfordevelopment"
 			}
 		}
 	},

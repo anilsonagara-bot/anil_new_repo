@@ -16,7 +16,7 @@
 			},
 			"StorageAccount": {
 				"type": "string",
-				"value": "adlsfordevelopment"
+				"value": "https://adlsfordevelopment.dfs.core.windows.net/"
 			}
 		}
 	},

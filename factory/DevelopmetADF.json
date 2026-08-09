@@ -1,0 +1,12 @@
+{
+	"name": "DevelopmetADF",
+	"properties": {
+		"globalParameters": {
+			"GlobalServerName": {
+				"type": "string",
+				"value": "developmentserverazure.database.windows.net"
+			}
+		}
+	},
+	"location": "centralindia"
+}

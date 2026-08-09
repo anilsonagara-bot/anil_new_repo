@@ -30,7 +30,8 @@
 					"referenceName": "KeyVaultLinkService",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "sqlpassword"
+				"secretName": "sqlpassword",
+				"secretVersion": "a57e7b13e7384cc6a32973c968ccbc0d"
 			},
 			"alwaysEncryptedSettings": {
 				"alwaysEncryptedAkvAuthType": "ManagedIdentity"

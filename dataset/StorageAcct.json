@@ -1,0 +1,33 @@
+{
+	"name": "StorageAcct",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLSStorageAcct",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"storageacct": {
+					"value": "@dataset().storageacct",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"storageacct": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "testglobal.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

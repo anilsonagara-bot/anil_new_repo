@@ -1,0 +1,86 @@
+{
+	"name": "Json2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "sample_orders.json",
+				"fileSystem": "inputfiles"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"orderId": {
+					"type": "string"
+				},
+				"orderDate": {
+					"type": "string"
+				},
+				"customer": {
+					"type": "object",
+					"properties": {
+						"customerId": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						},
+						"email": {
+							"type": "string"
+						},
+						"address": {
+							"type": "object",
+							"properties": {
+								"city": {
+									"type": "string"
+								},
+								"state": {
+									"type": "string"
+								},
+								"country": {
+									"type": "string"
+								},
+								"pincode": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"sku": {
+								"type": "string"
+							},
+							"productName": {
+								"type": "string"
+							},
+							"quantity": {
+								"type": "integer"
+							},
+							"unitPrice": {
+								"type": "number"
+							}
+						}
+					}
+				},
+				"totalAmount": {
+					"type": "number"
+				},
+				"status": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

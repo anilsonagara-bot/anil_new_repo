@@ -8,10 +8,11 @@
 			},
 			"DBname": {
 				"type": "string",
-				"defaultValue": "GlobalDatabaseName"
+				"defaultValue": "@pipeline().globalParameters. GlobalDatabaseName"
 			},
 			"username": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "@pipeline().globalParameters. GlobalSqlUsername"
 			}
 		},
 		"annotations": [],

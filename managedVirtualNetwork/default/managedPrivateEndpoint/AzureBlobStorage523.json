@@ -1,7 +1,0 @@
-{
-	"name": "AzureBlobStorage523",
-	"properties": {
-		"privateLinkResourceId": "/subscriptions/989c2f25-18b3-4687-8836-514620621ee2/resourceGroups/DevelopmentResourceGroup/providers/Microsoft.Storage/storageAccounts/blobstoragefordevelopmet",
-		"groupId": "blob"
-	}
-}

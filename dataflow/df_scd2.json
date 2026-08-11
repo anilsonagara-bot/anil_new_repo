@@ -1,0 +1,156 @@
+{
+	"name": "df_scd2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "scd2_src",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "scd2_tgt",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "scd2_tgt",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "scd2_tgt",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "lookup1"
+				},
+				{
+					"name": "derivedColumnscd2"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "alterRow1"
+				},
+				{
+					"name": "alterRow2"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          empname as string,",
+				"          city as string,",
+				"          phone as integer,",
+				"          empid as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1",
+				"source(output(",
+				"          empname as string,",
+				"          city as string,",
+				"          phone as integer,",
+				"          empid as integer,",
+				"          sk_emp as integer,",
+				"          start_dt as timestamp,",
+				"          end_dt as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source2",
+				"source1 select(mapColumn(",
+				"          src_empname = empname,",
+				"          src_city = city,",
+				"          src_phone = phone,",
+				"          src_empid = empid",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1, source2 lookup(src_empid == empid,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookup1",
+				"lookup1 derive(Tag = iif(isNull(empid), 'I', iif(src_empname==empname&&src_city==city&&src_phone==phone, 'D', 'U')),",
+				"          TodayDate = currentUTC()) ~> derivedColumnscd2",
+				"derivedColumnscd2 split(Tag=='I'||Tag=='U',",
+				"     Tag=='U',",
+				"     disjoint: false) ~> split1@(Insert, Update)",
+				"split1@Insert alterRow(insertIf(Tag=='I'||Tag=='U')) ~> alterRow1",
+				"split1@Update alterRow(updateIf(Tag=='U')) ~> alterRow2",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     input(",
+				"          empname as string,",
+				"          city as string,",
+				"          phone as integer,",
+				"          empid as integer,",
+				"          sk_emp as integer,",
+				"          start_dt as timestamp,",
+				"          end_dt as timestamp",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 2,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          empname = src_empname,",
+				"          city = src_city,",
+				"          phone = src_phone,",
+				"          empid = src_empid,",
+				"          start_dt = TodayDate",
+				"     )) ~> sink1",
+				"alterRow2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          empname as string,",
+				"          city as string,",
+				"          phone as integer,",
+				"          empid as integer,",
+				"          sk_emp as integer,",
+				"          start_dt as timestamp,",
+				"          end_dt as timestamp",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:true,",
+				"     upsertable:false,",
+				"     keys:['sk_emp'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          sk_emp,",
+				"          end_dt = TodayDate",
+				"     )) ~> sink2"
+			]
+		}
+	}
+}

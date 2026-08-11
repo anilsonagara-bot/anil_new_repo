@@ -33,11 +33,15 @@
 			},
 			{
 				"name": "start_dt",
-				"type": "date"
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
 			},
 			{
 				"name": "end_dt",
-				"type": "date"
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
 			}
 		],
 		"typeProperties": {

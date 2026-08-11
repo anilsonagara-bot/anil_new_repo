@@ -97,7 +97,7 @@
 				"     status== 'u',",
 				"     disjoint: false) ~> split1@(insert, updateenddate)",
 				"split1@insert alterRow(insertIf(status == 'i' || status == 'u')) ~> alterRow1",
-				"split1@updateenddate alterRow(upsertIf(status == 'u')) ~> alterRow2",
+				"split1@updateenddate alterRow(updateIf(status == 'u')) ~> alterRow2",
 				"alterRow1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",

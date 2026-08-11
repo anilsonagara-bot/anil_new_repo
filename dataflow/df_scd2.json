@@ -95,7 +95,7 @@
 				"          TodayDate = currentUTC()) ~> derivedColumnscd2",
 				"derivedColumnscd2 split(Tag=='I'||Tag=='U',",
 				"     Tag=='U',",
-				"     disjoint: false) ~> split1@(Insert, Update)",
+				"     disjoint: true) ~> split1@(Insert, Update)",
 				"split1@Insert alterRow(insertIf(Tag=='I'||Tag=='U')) ~> alterRow1",
 				"split1@Update alterRow(updateIf(Tag=='U')) ~> alterRow2",
 				"alterRow1 sink(allowSchemaDrift: true,",

@@ -26,6 +26,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable5",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
 				}
 			],
 			"transformations": [
@@ -117,7 +124,29 @@
 				"          phone = src_phone,",
 				"          empid = src_empid,",
 				"          start_dt = currrentdate",
-				"     )) ~> sink1"
+				"     )) ~> sink1",
+				"alterRow2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          empname as string,",
+				"          city as string,",
+				"          phone as integer,",
+				"          empid as integer,",
+				"          sk_emp as integer,",
+				"          start_dt as date,",
+				"          end_dt as date",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          end_dt = currrentdate",
+				"     )) ~> sink2"
 			]
 		}
 	}
